@@ -1,0 +1,130 @@
+const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
+
+export const WeatherCurrent = async (city) =>
+{
+   
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+
+    let data = await fetch(url).then(response => response.json()).catch(er => {console.error(er);return null})
+    if(data)
+    {
+        let result = 
+        {   City:data.name,
+            Temp: data.main.temp,
+            Desc:data.weather[0].description,
+            Windspeed: data.wind.speed,
+            Humidity: data.main.humidity
+        }
+        console.log("Api call succesfull")
+        console.log(result)
+
+
+        return result;
+    }
+    else
+    {
+        console.log("Data not read something wrong with response")
+    }
+
+}
+
+export const WeatherForecast = async (city) =>
+{
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`
+
+    let data = await fetch(url)
+    .then(response=>response.json())
+    .catch(er=>{console.log(er);return null})
+
+    if(!data)
+    {
+        console.error("No Data in response?")
+        return null;
+    }
+
+
+    try
+        {
+            const cityName = data.city.name
+
+
+            //IconID,Temp, max, temp min, temp avrage
+
+            const dailyData = {};
+
+            data.list.forEach(element => {
+
+                let theDate = element.dt_txt.split(" ")[0]
+
+                if(!dailyData[theDate])
+                {
+                    dailyData[theDate] = {
+                        temp: [],
+                        maxtemp: [],
+                        mintemp: [],
+                        iconid: []
+                    }
+
+                }
+
+                dailyData[theDate].temp.push(element.main.feels_like);
+                dailyData[theDate].maxtemp.push(element.main.temp_max);
+                dailyData[theDate].mintemp.push(element.main.temp_min);
+                dailyData[theDate].iconid.push(element.weather[0].icon)
+                
+            });
+
+
+            const getIconID = (arrayOfIcons) =>
+            {
+                let theIcon;
+
+                if(arrayOfIcons.length %2 === 1)
+                {
+                    theIcon = arrayOfIcons[Math.floor(arrayOfIcons.length / 2)]
+                }
+                else
+                {
+                    theIcon = arrayOfIcons[(arrayOfIcons.length / 2) - 1]
+                }
+
+                return theIcon;
+            }
+
+
+            const result = Object.entries(dailyData).map(([key,value]) => ({
+
+                date:key,
+                avTemp: value.temp.reduce((a,b) => a+b) / value.temp.length ,
+                avmaxTemp: value.maxtemp.reduce((a,b) => a+b) / value.maxtemp.length ,
+                avminTemp: value.mintemp.reduce((a,b) => a+b) / value.mintemp.length ,
+
+                medIcon: getIconID(value.iconid)
+
+            }));
+
+            console.log(result)
+            return result;
+    }
+
+    catch(er)
+    {
+        console.error(er);
+        return null;
+    }
+
+
+}
+
+
+export const CurrentWeatherWithIP = async () =>
+{
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+
+    let data = await fetch(url).then(response => response.json()).catch(er => {console.error(er);return null})
+
+    console.log(data.location.name) //Ip dåligt använd annan api för ip sök.
+
+
+}
+
