@@ -1,8 +1,13 @@
 import { useState } from 'react'
 
-//import './App.css'
+
+import { WeatherCurrent } from './service/Weatherservice'
+import { WeatherForecast } from './service/Weatherservice'
 
 function App() {
+ 
+  //WeatherCurrent("London");
+  WeatherForecast("London");
 
 
   return (
