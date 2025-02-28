@@ -25,6 +25,20 @@ function WeatherMain()
 
     //Local storage saves only the set favorites not alöl citites
 
+    useEffect(()=>
+    {
+        if(clickedCity)
+        {
+            setCityValue(clickedCity);
+        }
+       
+
+    },[clickedCity])
+
+   
+
+        
+
 
     useEffect(() =>
     {
@@ -100,10 +114,18 @@ function WeatherMain()
 
         return(
         <>
+
+
+        <Favorites myFav={myFav} setMyfavs={setMyfavs} setClickedCity={setClickedCity} clickedCity={clickedCity}/>
+            
+          
+
+         
+
             <div className="weather-con">
 
 
-                <Favorites myFav={myFav} setNewFav={setMyfavs} setClickedCity={setClickedCity} clickedCity={clickedCity}/>
+                
 
                 <div className="weather-top">
 
@@ -150,6 +172,8 @@ function WeatherMain()
                
 
             </div>
+
+            
         </>
     )
 

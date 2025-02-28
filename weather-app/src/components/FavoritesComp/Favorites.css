@@ -2,7 +2,14 @@
 
 .Fav-head
 {
+    background-color: black;
+    color: aliceblue;
 
+    display: flex;
+    justify-content:space-evenly;
+    align-items: start;
+    height: 100px;
+   
 }
 
 .Fav-nav
@@ -23,11 +30,32 @@ li
 
 .Fav-end
 {
-
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items: center;
+    height: 100px;
+    width: 150;
+    gap: 3px;
 }
 
 
 .Fav-btn
 {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    padding: 5px;
+    margin: 5px;
+}
 
+.Fav-btn:hover
+{
+    opacity: 0.8;
+}
+
+.Fav-btn:active
+{
+    transform: scale(0.9);
+    color: white;
 }

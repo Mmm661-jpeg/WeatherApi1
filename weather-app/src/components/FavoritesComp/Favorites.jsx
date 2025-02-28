@@ -1,8 +1,8 @@
+import "./Favorites.css"
 
+//Maybe problem?: when no new searches have been made it saves the last search can be good and bad.
 
-
-
-function Favorites({myFav,setMyFavs,setClickedCity,clickedCity})
+function Favorites({myFav,setMyfavs,setClickedCity,clickedCity})
 {
    
 
@@ -18,7 +18,7 @@ function Favorites({myFav,setMyFavs,setClickedCity,clickedCity})
             {
                 localStorage.setItem("Fav",JSON.stringify([...myFav,lastCity]));
 
-                setMyFavs([...myFav , lastCity]);
+                setMyfavs([...myFav , lastCity]);
             }
 
            
@@ -30,6 +30,7 @@ function Favorites({myFav,setMyFavs,setClickedCity,clickedCity})
 
     const RemoveFav = () =>
     {
+        
        if(clickedCity)
        {
             let thefavs = JSON.parse(localStorage.getItem("Fav")) || [];
@@ -42,7 +43,7 @@ function Favorites({myFav,setMyFavs,setClickedCity,clickedCity})
             {
                 localStorage.setItem("Fav",JSON.stringify(updatedFavs));
 
-                setMyFavs(updatedFavs);
+                setMyfavs(updatedFavs);
             }
 
             setClickedCity(null);
@@ -74,8 +75,10 @@ function Favorites({myFav,setMyFavs,setClickedCity,clickedCity})
 
         <div className="Fav-end">
             <h3>Save to favorites?</h3>
-            <button className="Fav-btn" onClick={AddFav}>+</button> 
-            <button className="Fav-btn" onClick={RemoveFav}>-</button>
+           <div>
+           <button className="Fav-btn" onClick={AddFav}>+</button> 
+           <button className="Fav-btn" onClick={RemoveFav}>-</button>
+           </div>
         </div>
         
 
