@@ -18,7 +18,12 @@ function WeatherMain()
     const [cityValue,setCityValue] = useState("");
     const [currentData,setCurrentdata] = useState(null)
     const [forecastData,setForeCastdata] = useState(null)
-    const [myFav,setMyfavs] = useState(localStorage.getItem("fav") || [])
+
+    const [myFav,setMyfavs] = useState(JSON.parse(localStorage.getItem("Fav")) || [])
+
+    const [clickedCity,setClickedCity] = useState(null);
+
+    //Local storage saves only the set favorites not alöl citites
 
 
     useEffect(() =>
@@ -69,6 +74,15 @@ function WeatherMain()
             {
                 setCurrentdata(result);
                 setForeCastdata(result2);
+
+
+
+                //Every search save all cities
+
+                let theCities = new Set(JSON.parse(sessionStorage.getItem("Cities")) ||[]); //make into set
+                theCities.add(cityValue); //Add to set makes sure its unique
+
+                sessionStorage.setItem("Cities",JSON.stringify([...theCities])); //then take set make it into array and add back dont overwrite
             }
             else
             {
@@ -89,7 +103,7 @@ function WeatherMain()
             <div className="weather-con">
 
 
-                <Favorites myFav={myFav} setNewFav={setMyfavs}/>
+                <Favorites myFav={myFav} setNewFav={setMyfavs} setClickedCity={setClickedCity} clickedCity={clickedCity}/>
 
                 <div className="weather-top">
 
