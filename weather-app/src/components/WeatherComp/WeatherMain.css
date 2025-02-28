@@ -1,11 +1,36 @@
-.weather-con
+
+
+
+
+:root
 {
 
 }
 
+body
+{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+
+
+
+.weather-con
+{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border-radius: 12px;
+}
+
 .weather-top
 {
-
+    
 }
 
 .weather-top input

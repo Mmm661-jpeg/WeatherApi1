@@ -1,5 +1,62 @@
 
 .weather-bot
 {
-    
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 100%;
+    height: auto;
+}
+
+.forecast-item
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 18%;
+}
+
+.forecast-item2
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    width: 100%;
+    height: 18%;
+}
+
+.forecast-item img
+{
+    object-fit: contain;
+    border-radius: 25%;
+    height: 80%;
+}
+
+.forecast-item h3
+{
+    font-family: monospace sans-serif;
+    font-size: 15px;
+}
+
+.forecast-item .min 
+{
+    font-family: monospace sans-serif;
+    font-size: 10px;
+    opacity: 0.6;
+}
+
+.forecast-item .max 
+{
+    font-family: monospace sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    opacity: 1.1;
+}
+
+.forecast-item .avg
+{
+    font-family: monospace sans-serif;
+    font-size: 10px;
 }
