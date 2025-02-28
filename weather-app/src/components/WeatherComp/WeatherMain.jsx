@@ -1,44 +1,139 @@
+import { useEffect, useRef, useState } from "react"
 
+import "./WeatherMain.css"
 
+import { WeatherCurrent } from './service/Weatherservice'
+import { WeatherForecast } from './service/Weatherservic'
+
+import CurrentComp from "./CurrentComp"
+import ForecastComp from "./ForecastComp"
+import Favorites from "../FavoritesComp/Favorites"
 
 
 
 function WeatherMain()
 {
+    
+
+    const [cityValue,setCityValue] = useState("");
+    const [currentData,setCurrentdata] = useState(null)
+    const [forecastData,setForeCastdata] = useState(null)
+    const [myFav,setMyfavs] = useState(localStorage.getItem("fav") || [])
 
 
-    return(
+    useEffect(() =>
+    {
+        const InitialGetWeather = async () =>
+        {
+            try
+            {
+                let result1 = await WeatherCurrent("Stockholm");
+                let result2 = await WeatherForecast("Stockholm");
+
+                if(result1 && result2)
+                {
+                    setCurrentdata(result1);
+                    setForeCastdata(result2);
+                }
+
+            }
+            catch(er)
+            {
+                console.error("Error handling initial request when page mounts:",er)
+            }
+           
+
+
+        }
+
+        InitialGetWeather();
+       
+       
+
+    },[])
+
+    const HandleSearch = async () =>
+    {
+       try
+       {
+            if(!cityValue)
+            {
+                alert("Enter city to search!");
+                return;
+            }
+
+            let result = await WeatherCurrent(cityValue);
+            let result2 = await WeatherForecast(cityValue)
+
+            if(result && result)
+            {
+                setCurrentdata(result);
+                setForeCastdata(result2);
+            }
+            else
+            {
+                console.error("Data not recieved from request(Search).");
+            }
+       }
+       catch(er)
+       {
+            console.log("Error " + er);
+       }
+
+    }
+
+    
+
+        return(
         <>
             <div className="weather-con">
-                <header> 
-                   
 
-                    <h2>button or something like it maybe ul navbar that can store fav</h2>
-                    <h2>vertical ul with fav cires small button that follows</h2>
-                    <h2>should stock when you scroll down camoflage when at the top</h2>
 
-                </header>
+                <Favorites myFav={myFav} setNewFav={setMyfavs}/>
 
                 <div className="weather-top">
 
-                    <input type="text" />
-                    <button>Search</button>
-
-                    <h2>SMall section with currect degrees based on ip</h2>
+                    <input type="text" placeholder="city.." value={cityValue} onChange={(e) =>setCityValue(e.target.value)}/> 
+                    <button onClick={HandleSearch}>Search</button>
 
                 </div>
 
-                <div className="weather-mid">
-                    <h2>First based on ip then search shows up</h2>
-                    <h2>Forecast 5 days</h2>
+                {
+                    !currentData && !forecastData ? (
+                        <>
 
-                </div>
+                        <div className="weather-mid">
 
-                <div className="weather-bot">
+                        <h2> Loading...</h2>
+                        <h2>{cityValue}</h2>
 
-                <h2>Extra stuff like humidity etc </h2>
+                        </div>
 
-                </div>
+                        <div className="weather-bot">
+
+                        <p>Loading...</p>
+
+                            
+                        </div>
+
+                        </>
+
+
+
+ 
+                    ) 
+                    : 
+                    (   <> 
+                        <CurrentComp currentData = {currentData} />
+
+                        <ForecastComp forecastData={forecastData} />
+                               
+                        </> 
+
+                    )
+                }
+
+               
 
             </div>
         </>

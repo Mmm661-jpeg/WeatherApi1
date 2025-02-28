@@ -1,18 +1,18 @@
 import { useState } from 'react'
 
 
-import { WeatherCurrent } from './service/Weatherservice'
-import { WeatherForecast } from './service/Weatherservice'
+
+
+import WeatherMain from './components/WeatherComp/WeatherMain';
 
 function App() {
  
-  //WeatherCurrent("London");
-  WeatherForecast("London");
+  
 
 
   return (
     <>
-      
+      <WeatherMain></WeatherMain>
     </>
   )
 }
