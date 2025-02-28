@@ -1,9 +1,18 @@
 .weather-mid
 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
 
 }
 
 .weather-mid-details
 {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    width: 100%;
 
 }

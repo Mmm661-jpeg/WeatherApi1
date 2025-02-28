@@ -1,13 +1,13 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 
 import "./WeatherMain.css"
 
-import { WeatherCurrent } from './service/Weatherservice'
-import { WeatherForecast } from './service/Weatherservic'
+import { WeatherCurrent } from '../../service/Weatherservice'
+import { WeatherForecast } from '../../service/Weatherservice'
 
-import CurrentComp from "../CurrentComp/CurrentComp"
-import ForecastComp from "../ForecastComp/ForecastComp"
 import Favorites from "../FavoritesComp/Favorites"
+import ForecastComp from "../ForecastComp/ForecastComp"
+import CurrentComp from "../CurrentComp/CurrentComp"
 
 
 

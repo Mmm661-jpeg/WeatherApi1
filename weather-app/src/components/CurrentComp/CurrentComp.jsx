@@ -1,22 +1,20 @@
-import { WeatherCurrent } from './service/Weatherservice'
+import "./CurrentCompStyle.css"
 
-
-
-
-function CurrentComp()
+function CurrentComp({currentData})
 {
     return(
         <>
 
                 <div className="weather-mid">
-                    <h2> 0° </h2>
-                    <h2>Cityname</h2>
+                    <h1>{currentData.temp} °C</h1>
+                    <h2>{currentData.city}</h2>
+                    <h2>{currentData.des}</h2>
 
                     <div className="weather-mid-details">
-                    <p>wind</p>
+                    <p>{currentData.wind}</p>
                     <p>wind image</p>
 
-                    <p>humidity</p>
+                    <p>{currentData.humidity}</p>
                     <p>hum image</p>
                     </div>
 

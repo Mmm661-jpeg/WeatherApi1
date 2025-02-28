@@ -12,7 +12,7 @@ export const WeatherCurrent = async (city) =>
         {   city:data.name,
             temp: data.main.temp,
             des:data.weather[0].description,
-            windspeed: data.wind.speed,
+            wind: data.wind.speed,
             humidity: data.main.humidity
         }
         console.log("Api call succesfull")
@@ -67,9 +67,9 @@ export const WeatherForecast = async (city) =>
 
                 }
 
-                dailyData[theDate].temp.push(element.main.feels_like);
+                dailyData[theDate].temp.push(element.main.temp);
                 dailyData[theDate].maxtemp.push(element.main.temp_max);
-                dailyData[theDate].mintemp.push(element.main.temp_min);
+                dailyData[theDate].mintemp.push(element.main.feels_like); //Really its temp_min but feels_like generate lower number sometimes
                 dailyData[theDate].iconid.push(element.weather[0].icon)
                 
             });
@@ -101,7 +101,7 @@ export const WeatherForecast = async (city) =>
 
                 medIcon: getIconID(value.iconid)
 
-            }));
+            })).sort((a,b)=> new Date(a.date) - new Date(b.date));
 
             console.log(result)
             return result;
