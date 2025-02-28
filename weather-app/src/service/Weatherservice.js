@@ -9,11 +9,11 @@ export const WeatherCurrent = async (city) =>
     if(data)
     {
         let result = 
-        {   City:data.name,
-            Temp: data.main.temp,
-            Desc:data.weather[0].description,
-            Windspeed: data.wind.speed,
-            Humidity: data.main.humidity
+        {   city:data.name,
+            temp: data.main.temp,
+            des:data.weather[0].description,
+            windspeed: data.wind.speed,
+            humidity: data.main.humidity
         }
         console.log("Api call succesfull")
         console.log(result)
@@ -124,6 +124,9 @@ export const CurrentWeatherWithIP = async () =>
     let data = await fetch(url).then(response => response.json()).catch(er => {console.error(er);return null})
 
     console.log(data.location.name) //Ip dåligt använd annan api för ip sök.
+
+    //current och forecast ska kallas med denna använd  bara geolocaion sen
+    // kallas denna i main med stad/koordinat
 
 
 }
