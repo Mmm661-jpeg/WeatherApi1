@@ -64,16 +64,20 @@ function Favorites({myFav,setMyFavs,setClickedCity,clickedCity})
 
     return(
 
-        <header> 
+        <header className="Fav-head"> 
 
-        <nav>
-            <ul>
+        <nav className="Fav-nav">
+            <ul className="Fav-ul">
                 {GenerateList()}
             </ul>  
         </nav>
 
-        <button className="Fav-btn" onClick={AddFav}>Add</button>
-        <button className="Fav-btn" onClick={RemoveFav}>Remove</button>
+        <div className="Fav-end">
+            <h3>Save to favorites?</h3>
+            <button className="Fav-btn" onClick={AddFav}>+</button> 
+            <button className="Fav-btn" onClick={RemoveFav}>-</button>
+        </div>
+        
 
     </header>
 

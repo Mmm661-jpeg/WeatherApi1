@@ -5,8 +5,8 @@ import "./WeatherMain.css"
 import { WeatherCurrent } from './service/Weatherservice'
 import { WeatherForecast } from './service/Weatherservic'
 
-import CurrentComp from "./CurrentComp"
-import ForecastComp from "./ForecastComp"
+import CurrentComp from "../CurrentComp/CurrentComp"
+import ForecastComp from "../ForecastComp/ForecastComp"
 import Favorites from "../FavoritesComp/Favorites"
 
 
@@ -116,14 +116,14 @@ function WeatherMain()
                     !currentData && !forecastData ? (
                         <>
 
-                        <div className="weather-mid">
+                        <div className="weather-mid-fail">
 
                         <h2> Loading...</h2>
                         <h2>{cityValue}</h2>
 
                         </div>
 
-                        <div className="weather-bot">
+                        <div className="weather-bot-fail">
 
                         <p>Loading...</p>
 

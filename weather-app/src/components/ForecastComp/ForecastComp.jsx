@@ -9,6 +9,11 @@ function ForecastComp()
 
             <p>Ett kort med rader</p>
 
+            <p>kalender icon, 5-dagprognos</p>
+
+            <p>UL:</p>
+            <p>Datum,Icon, Min, Avr, Max</p>
+
                 
         </div>
 
