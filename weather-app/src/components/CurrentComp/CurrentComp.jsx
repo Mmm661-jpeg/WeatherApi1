@@ -11,10 +11,10 @@ function CurrentComp({currentData})
                     <h2>{currentData.des}</h2>
 
                     <div className="weather-mid-details">
-                    <p>{currentData.wind}</p>
+                    <p>{currentData.wind} km/h</p>
                     <p>wind image</p>
 
-                    <p>{currentData.humidity}</p>
+                    <p>{currentData.humidity}%</p>
                     <p>hum image</p>
                     </div>
 
