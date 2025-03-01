@@ -7,6 +7,8 @@
 {
     margin: 0;
     padding: 0;
+    background: linear-gradient(270deg, rgba(28, 73, 58, 0.8),rgba(78, 69, 114, 0.8));
+
  
 }
 
@@ -14,18 +16,20 @@ body
 {
     margin: 0;
     padding: 0;
+    
 
 }
 
 .container
 {
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
     height: 100vh;
     overflow-y: auto;
-    width: 100vw;
+    gap: 3px;
+
+   
 }
 
 
@@ -33,15 +37,15 @@ body
 {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    border-radius: 12px;
+    gap: 5px;
+    border-radius: 25px;
+    border: 1px solid black;
 
-    
+    background: linear-gradient(135deg, rgb(28, 73, 58),#5b548a);
 
-    background-color: rgb(72, 72, 72);
+    margin: 30px;
 
-    width: 100%;
-
+  
 }
 
 .weather-top
@@ -52,22 +56,44 @@ body
     justify-content: space-around;
     height: 100px;
 
-    background-color: rgb(4, 83, 57);
+
+    padding: 12px;
 }
 
 .weather-top input
 {
-    width: 200px;
-    border: 2px solid black;
+    width: 300px;
+    height: 30px;
+    border: 0;
     padding: 5px;
-    border-radius: 20px;
+    border-radius: 30px;
+
+    text-align: center;
+    outline: 0;
+
+  
 }
 
 .weather-top button
 {
-    padding: 10px;
-    border-radius: 20px
+   padding: auto;
+    border-radius: 25px;
+    height: 40px;
+    width: 50px;
 
+    background-color: rgba(44, 116, 92, 0.6);
+
+
+
+    
+}
+
+.weather-top button img
+{
+    object-fit: contain;
+    height: 30px;
+    width: 30px;
+    
 }
 
 .weather-top button:hover

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 
+import searchicon from "../../assets/icons8-search-50.png"
+
 import "./WeatherMain.css"
 
 import { WeatherCurrent } from '../../service/Weatherservice'
@@ -116,6 +118,11 @@ function WeatherMain()
         <>
 
 
+        <div className="container"> 
+
+       
+
+
         <Favorites myFav={myFav} setMyfavs={setMyfavs} setClickedCity={setClickedCity} clickedCity={clickedCity}/>
             
           
@@ -130,7 +137,7 @@ function WeatherMain()
                 <div className="weather-top">
 
                     <input type="text" placeholder="city.." value={cityValue} onChange={(e) =>setCityValue(e.target.value)}/> 
-                    <button onClick={HandleSearch}>Search</button>
+                    <button onClick={HandleSearch}><img src={searchicon} alt="icon8.com" /></button>
 
                 </div>
 
@@ -170,6 +177,9 @@ function WeatherMain()
                 }
 
                
+
+            </div>
+
 
             </div>
 

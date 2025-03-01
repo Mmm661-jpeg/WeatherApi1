@@ -67,11 +67,10 @@ function Favorites({myFav,setMyfavs,setClickedCity,clickedCity})
 
         <header className="Fav-head"> 
 
-        <nav className="Fav-nav">
             <ul className="Fav-ul">
                 {GenerateList()}
             </ul>  
-        </nav>
+    
 
         <div className="Fav-end">
             <h3>Save to favorites?</h3>
