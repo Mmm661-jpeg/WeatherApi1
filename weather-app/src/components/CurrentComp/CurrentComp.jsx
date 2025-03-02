@@ -8,8 +8,9 @@ function CurrentComp({currentData})
 
                 <div className="weather-mid">
                     <h1>{currentData.temp} °C</h1>
+                    <img src={`http://openweathermap.org/img/wn/${currentData.icon}.png`} alt={currentData.icon} />
                     <h2>{currentData.city}</h2>
-                    <h2>{currentData.des}</h2>
+                    <h2 className="desc-h2">{currentData.des}</h2>
 
                     <div className="weather-mid-details">
                 

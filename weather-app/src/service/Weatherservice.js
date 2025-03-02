@@ -13,7 +13,8 @@ export const WeatherCurrent = async (city) =>
             temp: data.main.temp,
             des:data.weather[0].description,
             wind: data.wind.speed,
-            humidity: data.main.humidity
+            humidity: data.main.humidity,
+            icon: data.weather[0].icon
         }
         console.log("Api call succesfull")
         console.log(result)
@@ -95,9 +96,9 @@ export const WeatherForecast = async (city) =>
             const result = Object.entries(dailyData).map(([key,value]) => ({
 
                 date:key,
-                avTemp: value.temp.reduce((a,b) => a+b) / value.temp.length ,
-                avmaxTemp: value.maxtemp.reduce((a,b) => a+b) / value.maxtemp.length ,
-                avminTemp: value.mintemp.reduce((a,b) => a+b) / value.mintemp.length ,
+                avTemp: Number((value.temp.reduce((a,b) => a+b) / value.temp.length).toFixed(2)) ,
+                avmaxTemp: Number((value.maxtemp.reduce((a,b) => a+b) / value.maxtemp.length).toFixed(3)) ,
+                avminTemp: Number((value.mintemp.reduce((a,b) => a+b) / value.mintemp.length).toFixed(3)) ,
 
                 medIcon: getIconID(value.iconid)
 
