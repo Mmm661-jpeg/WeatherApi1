@@ -6,6 +6,7 @@ import "./WeatherMain.css"
 
 import { WeatherCurrent } from '../../service/Weatherservice'
 import { WeatherForecast } from '../../service/Weatherservice'
+import { CurrentWeatherWithIP } from "../../service/Weatherservice"
 
 import Favorites from "../FavoritesComp/Favorites"
 import ForecastComp from "../ForecastComp/ForecastComp"
@@ -24,6 +25,74 @@ function WeatherMain()
     const [myFav,setMyfavs] = useState(JSON.parse(localStorage.getItem("Fav")) || [])
 
     const [clickedCity,setClickedCity] = useState(null);
+
+    const [userLocation,setUserLocation] = useState({Lat:null,Lon:null});
+
+    const [loadingIP,setLoadingIP] = useState(true);
+
+
+
+    useEffect(()=>
+    {
+       if("geolocation" in navigator)
+       {
+        navigator.geolocation.getCurrentPosition((response) =>{
+
+            setUserLocation({Lat:response.coords.latitude,Lon:response.coords.longitude})
+           })
+       }
+       else
+       {
+        console.error("Geolocation not supported by browser.")
+       }
+        
+    },[])
+
+
+    useEffect(() =>
+    {
+        
+        if (!userLocation.Lat || !userLocation.Lon) return;
+
+        const locationWeatherSearch = async () =>
+        {
+           try
+           {
+                let result = await CurrentWeatherWithIP(userLocation)
+
+                if(result)
+                {
+                    let result2 = await WeatherForecast(result.city)
+                    if(result2)
+                    {
+                        //ssetLoadingIP(true);
+                        setCurrentdata(result);
+                        setForeCastdata(result2);
+                    }
+                    else
+                    {
+                        setLoadingIP(false);
+                    }
+                }
+                else
+                {
+                    setLoadingIP(false);
+                }
+           }
+           catch(er)
+           {
+            console.error(er);
+           }
+          
+        }
+
+        locationWeatherSearch();
+
+    },[userLocation],loadingIP)
+
+
+
+
 
     //Local storage saves only the set favorites not alöl citites
 
@@ -44,12 +113,15 @@ function WeatherMain()
 
     useEffect(() =>
     {
+        if (!loadingIP||!userLocation.Lat || !userLocation.Lon) return;
+
+
         const InitialGetWeather = async () =>
         {
             try
             {
-                let result1 = await WeatherCurrent("Stockholm");
-                let result2 = await WeatherForecast("Stockholm");
+                let result1 = await WeatherCurrent("Paris");
+                let result2 = await WeatherForecast("Paris");
 
                 if(result1 && result2)
                 {
@@ -71,7 +143,7 @@ function WeatherMain()
        
        
 
-    },[])
+    },[loadingIP])
 
     const HandleSearch = async () =>
     {

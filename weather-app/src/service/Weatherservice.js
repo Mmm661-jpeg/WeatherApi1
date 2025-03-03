@@ -118,16 +118,33 @@ export const WeatherForecast = async (city) =>
 }
 
 
-export const CurrentWeatherWithIP = async () =>
+export const CurrentWeatherWithIP = async (userLocation) =>
 {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+   
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${userLocation.Lat}&lon=${userLocation.Lon}&appid=${API_KEY}&units=metric`
 
     let data = await fetch(url).then(response => response.json()).catch(er => {console.error(er);return null})
 
-    console.log(data.location.name) //Ip dåligt använd annan api för ip sök.
-
-    //current och forecast ska kallas med denna använd  bara geolocaion sen
-    // kallas denna i main med stad/koordinat
+    if(data)
+        {
+            let result = 
+            {   city:data.name,
+                temp: data.main.temp,
+                des:data.weather[0].description,
+                wind: data.wind.speed,
+                humidity: data.main.humidity,
+                icon: data.weather[0].icon
+            }
+            console.log("Api call with ip succesfull")
+            console.log(result)
+    
+    
+            return result;
+        }
+        else
+        {
+            console.log("Data not read something wrong with response ip search")
+        }
 
 
 }
