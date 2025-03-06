@@ -96,7 +96,7 @@ export const WeatherForecast = async (city) =>
             const result = Object.entries(dailyData).map(([key,value]) => ({
 
                 date:key,
-                avTemp: Number((value.temp.reduce((a,b) => a+b) / value.temp.length).toFixed(2)) ,
+                avTemp: Number((value.temp.reduce((a,b) => a+b) / value.temp.length).toFixed(1)) ,
                 avmaxTemp: Number((value.maxtemp.reduce((a,b) => a+b) / value.maxtemp.length).toFixed(3)) ,
                 avminTemp: Number((value.mintemp.reduce((a,b) => a+b) / value.mintemp.length).toFixed(3)) ,
 

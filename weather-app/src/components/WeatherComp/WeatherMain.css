@@ -41,7 +41,7 @@ body
     border-radius: 25px;
     border: 1px solid black;
 
-    background: linear-gradient(270deg, rgba(75, 131, 188, 0.7),rgba(147, 134, 198, 0.7));
+    background: linear-gradient(270deg, rgba(75, 131, 188, 0.6),rgba(147, 134, 198, 0.6));
 
     margin: 30px;
 
@@ -83,8 +83,7 @@ body
     height: 40px;
     width: 50px;
 
-    background-color: rgba(44, 116, 92, 0.6);
-
+    background: linear-gradient(270deg, rgba(75, 131, 188, 0.9),rgba(147, 134, 198, 0.9));
     margin: 5px;
 
     
