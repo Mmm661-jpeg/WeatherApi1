@@ -23,6 +23,7 @@
     font-weight: 500;
     margin: 10px;
     color: white;
+    font-family:'Courier New', Courier, monospace;
 }
 
 .weather-mid h2
@@ -31,6 +32,7 @@
     font-weight: 400;
     color: white;
     margin: 40px;
+    font-family:'Courier New', Courier, monospace;
     
 }
 
@@ -82,4 +84,5 @@
     font-size: 20px;
     margin: 3px;
     color: white;
+    font-family:'Courier New', Courier, monospace;
 }
