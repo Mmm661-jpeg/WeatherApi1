@@ -24,6 +24,8 @@
     margin: 10px;
     color: white;
     font-family:'Courier New', Courier, monospace;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
 }
 
 .weather-mid h2
