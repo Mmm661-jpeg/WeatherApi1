@@ -7,18 +7,20 @@ function CurrentComp({currentData})
         <>
 
                 <div className="weather-mid">
-                    <h1>{currentData.temp} °C</h1>
+                    <h1>{currentData.temp}°C</h1>
                     <img src={`http://openweathermap.org/img/wn/${currentData.icon}.png`} alt={currentData.icon} />
                     <h2>{currentData.city}</h2>
-                    <h2 className="desc-h2">{currentData.des}</h2>
 
                     <div className="weather-mid-details">
-                
-
+                    
                     <div className="detail-col">
                     <p>Windspeed:</p>
                     <p>{currentData.wind} km/h</p>
                     <img src={windicon} alt="wind" />
+                    </div>
+
+                    <div className="details-col">
+                    <h2 className="desc-h2">{currentData.des}</h2>
                     </div>
 
                     <div className="detail-col">
