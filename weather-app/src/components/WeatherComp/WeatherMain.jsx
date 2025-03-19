@@ -24,7 +24,7 @@ function WeatherMain()
 
     const [myFav,setMyfavs] = useState(JSON.parse(localStorage.getItem("Fav")) || [])
 
-    const [clickedCity,setClickedCity] = useState(null);
+    const [clickedCity,setClickedCity] = useState(null); //Kan köra useeffekt som söker if !null
 
     const [userLocation,setUserLocation] = useState({Lat:null,Lon:null});
 
@@ -88,7 +88,7 @@ function WeatherMain()
 
         locationWeatherSearch();
 
-    },[userLocation],loadingIP)
+    },[userLocation,loadingIP])
 
 
 
@@ -101,7 +101,10 @@ function WeatherMain()
         if(clickedCity)
         {
             setCityValue(clickedCity);
+            //Sök utan klick
+
         }
+
        
 
     },[clickedCity])

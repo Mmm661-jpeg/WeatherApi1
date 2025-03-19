@@ -33,6 +33,7 @@
     height: 300px;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
     background: linear-gradient(135deg, rgba(75, 131, 188, 0.4),rgba(147, 134, 198, 0.4));
+    border-radius: 13px;
 
     
    transition: 0.3s;
